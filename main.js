@@ -4,6 +4,7 @@ const modalContent = document.querySelector(".modal-content");
 const xButton = document.querySelector(".X-btn");
 const mainNav = document.querySelector(".main-nav");
 const hamburgerMenu = document.querySelector(".hamburger-menu");
+const careers = document.querySelector(".careers");
 const careersDropdown = document.querySelector(".careers-dropdown");
 const careersDropdownText = document.querySelector(".careers-and-arrow-container");
 const dropdownArrow = document.querySelector(".arrow-left");
@@ -34,15 +35,38 @@ hamburgerMenu.addEventListener("click", (e) => {
     }
 });
 
-careersDropdownText.addEventListener("click", (e) => {
+careers.addEventListener("click", (e) => {
     if (!dropdownArrow.classList.contains("flip-arrow-downwards-animation")) {
+        dropdownArrow.className = "arrow-left";
+        dropdownArrow.classList.add("flip-arrow-downwards-animation");
+        careersDropdown.style.display = "flex";
+        careersDropdown.style.opacity = "1";
+    } else {
+        dropdownArrow.classList.add("flip-arrow-to-left-animation");
+        dropdownArrow.classList.remove("flip-arrow-downwards-animation");
+        careersDropdown.style.display = "none";
+    }
+});
+
+careers.addEventListener("mouseenter", (e) => {
+    if (
+        !dropdownArrow.classList.contains("flip-arrow-downwards-animation") &&
+        window.matchMedia("(min-width: 47rem)").matches
+    ) {
         dropdownArrow.className = "arrow-left";
         dropdownArrow.classList.add("flip-arrow-downwards-animation");
         careersDropdown.style.display = "flex";
         setTimeout(() => {
             careersDropdown.style.opacity = "1";
         }, 10);
-    } else {
+    }
+});
+
+careers.addEventListener("mouseleave", (e) => {
+    if (
+        dropdownArrow.classList.contains("flip-arrow-downwards-animation") &&
+        window.matchMedia("(min-width: 47rem)").matches
+    ) {
         dropdownArrow.classList.add("flip-arrow-to-left-animation");
         dropdownArrow.classList.remove("flip-arrow-downwards-animation");
         setTimeout(() => {
@@ -53,7 +77,7 @@ careersDropdownText.addEventListener("click", (e) => {
 });
 
 textSection2.addEventListener("mouseenter", (e) => {
-    if (window.matchMedia("(min-width: 47rem)").matches) {
+    if (window.matchMedia("(min-width: 47rem)").matches && !window.matchMedia("(max-width: 68rem)").matches) {
         e.target.style.boxShadow = "0px 10px 13px -7px black, 0px 0px 18px 6px black";
         textSection3.style.zIndex = "0";
         e.target.style.zIndex = "1";
@@ -65,7 +89,7 @@ textSection2.addEventListener("mouseleave", (e) => {
 });
 
 textSection3.addEventListener("mouseenter", (e) => {
-    if (window.matchMedia("(min-width: 47rem)").matches) {
+    if (window.matchMedia("(min-width: 47rem)").matches && !window.matchMedia("(max-width: 68rem)").matches) {
         e.target.style.boxShadow = "0px 10px 13px -7px black, 0px 0px 18px 6px #eff6df";
         textSection2.style.zIndex = "0";
         e.target.style.zIndex = "1";
@@ -79,7 +103,7 @@ textSection3.addEventListener("mouseleave", (e) => {
 for (let i = 0; i < slides.length; i++) {
     slides[i].addEventListener("click", (e) => {
         let isCollapsed = slidesContent[i].getAttribute("data-collapsed") === "true";
-        if (!window.matchMedia("(min-width: 47rem)").matches) {
+        if (window.matchMedia("(max-width: 68rem)").matches) {
             if (isCollapsed) {
                 expandSection(slidesContent[i]);
                 slidesContent[i].setAttribute("data-collapsed", "false");
@@ -130,7 +154,7 @@ xButton.addEventListener("click", (e) => {
 setTimeout(() => {
     if (window.matchMedia("(min-width: 47rem)").matches) {
         modalContainer.style.display = "flex";
-        setTimeout(() => {            
+        setTimeout(() => {
             modalContent.style.transform = "translateY(0)";
         }, 10);
     }
