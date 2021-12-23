@@ -762,29 +762,7 @@ body {
 }
 
 .desktop-footer-container {
-    position: fixed;
-    display: flex;
-    direction: rtl;
-    bottom: 1rem;
-    right: 1rem;
-    justify-content: center;
-    align-items: center;
-    padding: 0.3rem 0.5rem;
-    background: #06f;
-    color: white;
-    border: 2px solid #25d366;
-    border-radius: 15px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    z-index: 10;
-
-    div {
-        margin-left: 0.2rem;
-    }
-
-    p {
-        margin: 0;
-    }
+    display: none;
 }
 
 .mobile-footer {
@@ -1109,6 +1087,32 @@ body {
         label {
             white-space: nowrap;
             margin-left: 1rem;
+        }
+    }
+
+    .desktop-footer-container {
+        position: fixed;
+        display: flex;
+        direction: rtl;
+        bottom: 1rem;
+        right: 1rem;
+        justify-content: center;
+        align-items: center;
+        padding: 0.3rem 0.5rem;
+        background: #06f;
+        color: white;
+        border: 2px solid #25d366;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        z-index: 10;
+    
+        div {
+            margin-left: 0.2rem;
+        }
+    
+        p {
+            margin: 0;
         }
     }
 
